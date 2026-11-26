@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>青蛙桌宠 · 设置</title>
+<link rel="stylesheet" href="settings.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <canvas id="preview-frog" width="240" height="240" aria-hidden="true"></canvas>
+    <div class="topbar-text">
+      <h1>青蛙桌宠</h1>
+      <p id="subtitle">静止不动 · 仅单击时跳一次</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-title">运动模式</div>
+      <div class="modes">
+        <button class="mode" data-mode="still">
+          <span class="mode-idx">01</span>
+          <span class="mode-body"><b>静止不动</b><small>仅鼠标单击时原地跳一次</small></span>
+        </button>
+        <button class="mode" data-mode="hop">
+          <span class="mode-idx">02</span>
+          <span class="mode-body"><b>持续原地跳</b><small>按随机间隔反复上下跳</small></span>
+        </button>
+        <button class="mode" data-mode="roam">
+          <span class="mode-idx">03</span>
+          <span class="mode-body"><b>持续随机方向跳</b><small>朝随机方向跳到新位置</small></span>
+        </button>
+      </div>
+      <button class="stop-btn" id="stop-jump">■ 停止跳跃（切回静止）</button>
+    </section>
+
+    <section class="card">
+      <div class="card-title">跳跃间隔 <span class="value" id="gap-value">1 ~ 7 秒</span></div>
+      <div class="range-row">
+        <span>1s</span>
+        <input type="range" id="gap" min="2" max="12" step="1" value="7">
+        <span>12s</span>
+      </div>
+      <p class="hint">两次跳跃之间至少间隔 <b>1 秒</b>，实际间隔在 1 秒与上限之间随机取值。</p>
+    </section>
+
+    <section class="card">
+      <div class="card-title">绿色色块 <span class="value" id="color-value">经典绿</span></div>
+      <div class="swatches" id="swatches"></div>
+      <div class="color-row">
+        <label class="picker">自定义颜色 <input type="color" id="custom" value="#B4D855"></label>
+        <button class="ghost-btn" id="random-color">随机颜色</button>
+      </div>
+      <p class="hint">仅切换绿色色块；白色肚皮与黑色眼睛保持原样，明暗层次由所选颜色自动派生。</p>
+    </section>
+
+    <section class="card">
+      <div class="card-title">外观与行为</div>
+      <div class="range-row size-row">
+        <span>70%</span>
+        <input type="range" id="size" min="70" max="150" step="5" value="100">
+        <span>150%</span>
+      </div>
+      <div class="face-row">
+        <span>原图朝向</span>
+        <button class="face-opt" data-face="left">头朝左</button>
+        <button class="face-opt" data-face="right">头朝右</button>
+      </div>
+      <p class="hint">向哪个方向跳，头就朝向哪个方向；若原图朝向判断相反可在此校正。</p>
+      <label class="toggle"><span>窗口置顶<small>始终显示在其他窗口之上</small></span><input type="checkbox" id="alwaysOnTop" checked><i></i></label>
+      <label class="toggle"><span>鼠标穿透<small>透明区域不挡住桌面点击</small></span><input type="checkbox" id="clickThrough" checked><i></i></label>
+      <label class="toggle"><span>开机自启<small>登录系统后自动运行</small></span><input type="checkbox" id="autoLaunch"><i></i></label>
+    </section>
+
+    <section class="card help">
+      <div class="card-title">操作提示</div>
+      <p>单击青蛙：立即原地跳一次（受 1 秒最小间隔约束）</p>
+      <p>按住拖动：把青蛙挪到桌面任意位置</p>
+      <p>右键青蛙 / 点击托盘图标：快速切换模式、颜色，或选择「停止跳跃」</p>
+      <p>随机跳为斜抛运动：步长基本恒定、方向随机，横纵分速度随方向变化</p>
+      <p>macOS 版隐藏了 Dock 图标，请通过菜单栏托盘图标操作</p>
+    </section>
+  </main>
+
+  <footer>
+    <button class="ghost-btn" id="reset">恢复默认位置</button>
+    <button class="ghost-btn danger" id="quit">退出桌宠</button>
+    <button class="primary-btn" id="close">完成</button>
+  </footer>
+</div>
+<script src="frames/manifest.js"></script>
+<script src="shared.js"></script>
+<script src="frog-render.js"></script>
+<script src="settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青蛙桌宠</title>
+<link rel="stylesheet" href="pet.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <canvas id="frog" width="240" height="240"></canvas>
+    <div id="hit-area"></div>
+  </div>
+</div>
+
+<!-- 浏览器预览模式下的控制面板（Electron 中由独立设置窗口承担） -->
+<div id="demo-panel">
+  <div class="demo-head">
+    <span class="demo-dot"></span>
+    <div>
+      <div class="demo-title">青蛙桌宠 <small>预览模式</small></div>
+      <div class="demo-sub">使用 GIF 原帧 · 单击跳一次</div>
+    </div>
+  </div>
+  <div class="demo-section">
+    <div class="demo-label">运动模式</div>
+    <div class="mode-row">
+      <button class="mode-btn active" data-mode="still">静止</button>
+      <button class="mode-btn" data-mode="hop">原地跳</button>
+      <button class="mode-btn" data-mode="roam">随机跳</button>
+    </div>
+    <button class="stop-btn" id="demo-stop">■ 停止跳跃</button>
+  </div>
+  <div class="demo-section">
+    <div class="demo-label">绿色色块 <span id="color-name">经典绿</span></div>
+    <div class="swatches" id="swatches"></div>
+    <label class="custom-color">自定义 <input type="color" id="custom-color" value="#B4D855"></label>
+  </div>
+  <div class="demo-section">
+    <div class="demo-label">间隔上限 <span id="gap-label">7 秒</span></div>
+    <input type="range" id="gap-range" min="2" max="12" step="1" value="7">
+    <div class="demo-hint">每次随机取 1 秒 ~ 上限之间，最少间隔 1 秒</div>
+  </div>
+  <div class="demo-section">
+    <div class="demo-label">大小 <span id="size-label">100%</span></div>
+    <input type="range" id="size-range" min="70" max="150" step="5" value="100">
+  </div>
+  <div class="demo-section">
+    <div class="demo-label">原图朝向</div>
+    <div class="mode-row">
+      <button class="face-btn active" data-face="left">头朝左</button>
+      <button class="face-btn" data-face="right">头朝右</button>
+    </div>
+    <div class="demo-hint">向哪个方向跳，头就朝向哪个方向</div>
+  </div>
+  <div class="demo-tip">桌面应用中另有系统托盘、右键菜单与「停止跳跃」按钮</div>
+</div>
+
+<script src="frames/manifest.js"></script>
+<script src="shared.js"></script>
+<script src="frog-render.js"></script>
+<script src="pet.js"></script>
+</body>
+</html>

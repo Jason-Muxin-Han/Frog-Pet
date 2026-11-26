@@ -1,0 +1,91 @@
+{
+  "name": "frog-desktop-pet",
+  "version": "1.0.0",
+  "description": "青蛙动态桌宠 - 白绿黑三色块，支持静止/原地跳/随机方向跳",
+  "main": "src/main.js",
+  "author": "WorkBuddy",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win --x64",
+    "build:win:zip": "electron-builder --win --x64 -c.win.target=zip",
+    "build:all": "npm run build:mac && npm run build:win",
+    "pack": "electron-builder --dir"
+  },
+  "devDependencies": {
+    "electron": "^45.5.0",
+    "electron-builder": "^26.18.0",
+    "sharp": "^0.35.5"
+  },
+  "build": {
+    "appId": "com.workbuddy.frogpet",
+    "productName": "FrogPet",
+    "copyright": "Copyright © 2026 WorkBuddy",
+    "asar": true,
+    "files": [
+      "src/**/*",
+      "src/frames/*.png",
+      "src/frames/manifest.js",
+      "build/icon.icns",
+      "build/icon.ico",
+      "build/icon.png",
+      "build/tray.png",
+      "build/tray@1x.png",
+      "build/tray@2x.png",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "mac": {
+      "category": "public.app-category.entertainment",
+      "icon": "build/icon.icns",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "title": "青蛙桌宠 FrogPet"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "青蛙桌宠"
+    }
+  }
+}
